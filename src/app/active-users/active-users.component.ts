@@ -1,0 +1,22 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { UserService } from '../user-service';
+
+@Component({
+  selector: 'app-active-users',
+  templateUrl: './active-users.component.html',
+  styleUrls: ['./active-users.component.css']
+})
+export class ActiveUsersComponent {
+  @Input() users: string[];
+
+  constructor( private userService: UserService) {
+    // this.userService.statusUpdatedInActive.subscribe(
+    //   (x) => alert('Inactive user' + x )
+    // );
+  }
+
+  onSetToInactive(id: number) {
+    this.userService.setToInactive(id);
+  }
+}
